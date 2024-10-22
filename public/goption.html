@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Options</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    .game-card {
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .game-card:hover {
+      transform: scale(1.05);
+    }
+    .game-card img {
+      max-width: 100%;
+      height: auto;
+    }
+    .game-card .card-body {
+      padding: 20px;
+      text-align: center;
+    }
+    .game-card .btn {
+      margin-top: 10px;
+    }
+    .navbar-brand img {
+      max-height: 80px; /* Adjust the height of the logo */
+    }
+    .navbar {
+      background-color: #000; /* Ensure the navbar background is black */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <a class="navbar-brand" href="#">
+      <img src="double1.jpg" alt="Company Logo"> <!-- Replace with your logo file -->
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Game Options Section -->
+  <section id="games" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Choose Your Game</h2>
+      <div class="row">
+        <!-- Game 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="card game-card">
+            <img src="g1.png" alt="Game 1">
+            <div class="card-body">
+              <h5 class="card-title">Exciting Game 1</h5>
+              <p class="card-text">Dive into this thrilling adventure and test your skills!</p>
+              <a href="play.html" class="btn btn-primary">Play Now</a>
+            </div>
+          </div>
+        </div>
+        <!-- Game 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card game-card">
+            <img src="g2.png" alt="Game 2">
+            <div class="card-body">
+              <h5 class="card-title">Amazing Game 2</h5>
+              <p class="card-text">Enjoy a fun-filled experience with this game.</p>
+              <a href="tic.html" class="btn btn-primary">Play Now</a>
+            </div>
+          </div>
+        </div>
+        <!-- Game 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card game-card">
+            <img src="https://via.placeholder.com/400x200" alt="Game 3">
+            <div class="card-body">
+              <h5 class="card-title">Fantastic Game 3</h5>
+              <p class="card-text">Challenge yourself with this exciting game.</p>
+              <a href="#" class="btn btn-primary">Coming Soon...</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

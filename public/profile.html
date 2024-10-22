@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+
+  <!-- Custom CSS for styling -->
+  <style>
+    body {
+      background: linear-gradient(135deg, #3a27dfd5, #0055e7b9);
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .profile-header {
+      background: rgba(0, 0, 0, 0.8);
+      color: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 3px solid #ffffff;
+    }
+
+    .profile-header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #ffffff;
+      margin-bottom: 15px;
+      transition: transform 0.3s;
+    }
+
+    .profile-header img:hover {
+      transform: scale(1.1);
+    }
+
+    .profile-header h1 {
+      margin-bottom: 5px;
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    .profile-header p {
+      margin-bottom: 0;
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    .profile-content {
+      padding: 30px 0;
+    }
+
+    .profile-info, .profile-stats {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+
+    .profile-info:hover, .profile-stats:hover {
+      transform: translateY(-10px);
+    }
+
+    .profile-info h2, .profile-stats h2 {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .profile-info p, .profile-stats p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .profile-info .fa, .profile-stats .fa {
+      margin-right: 10px;
+    }
+
+    .profile-stats .stat {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .profile-stats .stat i {
+      font-size: 24px;
+      color: #007bff;
+    }
+
+    .profile-stats .stat span {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      border-top: 3px solid #ffffff;
+    }
+    footer a {
+      color: #ffffff;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: lightgray;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Profile Header -->
+<div class="profile-header">
+  <img src="bg1.jpg" alt="User Profile Picture">
+  <h1>Mr Perfect</h1>
+  <p>Web Developer & Designer</p>
+</div>
+
+<!-- Profile Content -->
+<div class="container profile-content">
+  <div class="row">
+    <!-- Profile Information -->
+    <div class="col-md-6 profile-info">
+      <h2><i class="fa fa-user"></i> About Me</h2>
+      <p><i class="fa fa-briefcase"></i> Job Title: Senior Web Developer</p>
+      <p><i class="fa fa-envelope"></i> Email: aryan@devloper.com</p>
+      <p><i class="fa fa-phone"></i> Phone: +123 456 7890</p>
+      <p><i class="fa fa-map-marker-alt"></i> Location: San Francisco, IISC</p>
+    </div>
+    
+    <!-- Profile Statistics -->
+    <div class="col-md-6 profile-stats">
+      <h2><i class="fa fa-chart-line"></i> Statistics</h2>
+      <div class="stat">
+        <i class="fa fa-project-diagram"></i>
+        <span>Projects Completed: 126</span>
+      </div>
+      <div class="stat">
+        <i class="fa fa-users"></i>
+        <span>Clients: 47+</span>
+      </div>
+      <div class="stat">
+        <i class="fa fa-trophy"></i>
+        <span>Awards: 7</span>
+      </div>
+      <div class="stat">
+        <i class="fa fa-clock"></i>
+        <span>Years of Experience: 8</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 Perfect. All rights reserved.</p>
+  <h4>Contact Information</h4>
+        <p><strong>Email:</strong> doublepro@play.com</p>
+        <p><strong>Phone:</strong> +91 (910) 622-6351</p>
+        <p><strong>Address:</strong> 142 Main Street, Noida , India</p>
+</footer>
+
+<!-- JavaScript libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

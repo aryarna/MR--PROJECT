@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags and title -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game of Skills</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+      body {
+      background-color: black; /* Shiny black background */
+      color: white; /* White text color */
+    }
+
+    .navbar {
+      background-color: black !important; /* Black navbar */
+    }
+
+    .navbar-brand {
+      padding: 0;
+    }
+
+    .navbar-brand img {
+      max-height: 250px; /* Adjusted height for the logo */
+      max-width: 130px;
+      width: auto; /* Maintain aspect ratio */
+    }
+
+    .navbar-nav .nav-link {
+      color: white !important; /* White text color for navbar links */
+    }
+
+    #hero {
+      min-height: 100vh; /* Ensure hero section covers full viewport height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative; /* Required for positioning the alert */
+    }
+
+    #hero h1 {
+      font-size: 3.5rem; /* Adjust the font size of the welcome heading */
+      margin-bottom: 20px;
+    }
+
+    #hero .lead {
+      font-size: 1.5rem; /* Adjust the font size of the lead paragraph */
+    }
+
+    footer {
+      background-color: black; /* Black footer */
+      color: white; /* White text color */
+      padding: 20px 0;
+    }
+
+    footer a {
+      color: white; /* White text color for footer links */
+      margin-right: 10px;
+    }
+
+    footer a:hover {
+      color: lightgray; /* Light gray text color on hover */
+      text-decoration: none; /* Remove underline on hover */
+    }
+
+    /* Services Section Styles */
+    #services {
+      background-color: #1a1a1a; /* Dark gray background */
+      color: white; /* White text color */
+      padding: 80px 0;
+    }
+
+    #services h2 {
+      color: white; /* White text color for section heading */
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .service-card {
+      background-color: black; /* Dark gray card background */
+      border: none;
+      color: white; /* White text color */
+    }
+
+    .service-card .card-title {
+      color: white; /* White text color for card title */
+    }
+
+    .service-card .card-text {
+      color: lightgray; /* Light gray text color for card text */
+    }
+
+    .cta {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    .dynamic-alert {
+      position: fixed; /* Fixed positioning */
+      top: 50%; /* Center vertically */
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center horizontally and vertically */
+      background-color: #1a1a1a; /* Match the background color */
+      color: white;
+      padding: 15px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+      z-index: 1000;
+      text-align: center;
+      font-size: 1.2rem;
+      opacity: 0; /* Start with hidden */
+      transition: opacity 1s;
+    }
+
+    .highlight {
+      background-color: #ffcc00; /* Highlight color */
+      color: black; /* Text color for highlighted text */
+      font-weight: bold; /* Make the text bold */
+      padding: 0 5px; /* Add padding for spacing */
+      border-radius: 5px; /* Rounded corners for the highlight */
+    }
+
+
+    
+    .demo-section {
+      text-align: center;
+      padding: 80px 0;
+    }
+    .demo-section h2 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+    .demo-card {
+      background: #343a40;
+      color: white;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .demo-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .demo-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .demo-card-body {
+      padding: 20px;
+    }
+    .demo-card-body h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .demo-card-body p {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+    .dynamic-alert {
+  opacity: 0 !important;
+  transition: opacity 1s !important;
+}
+#registrationAlert {
+  display: block !important;
+}
+
+#testButton {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="double1.jpg" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="user.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profile.html">Devloper</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registration.html">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="winner.html">Winner</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ai.html">Another</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Dynamic Alert Section -->
+        <div id="dynamicAlert" class="dynamic-alert">
+          <span class="alert-icon">🎉</span> Congratulations! You have a <span class="highlight">chance to win unlimited money without investing!</span> <span class="alert-icon">🎉</span>
+        </div>
+        <div id="registrationAlert" class="dynamic-alert" style="display: none;">
+          <span class="alert-icon">⚠️</span> Don't miss out! <span class="highlight">Register</span> or <span class="highlight">Login</span> to start playing now! <span class="alert-icon">⚠️</span>
+        </div>
+        
+        <h1>Welcome to Game of Skills</h1>
+        <p class="lead">Unlock your potential with our skill-based games and challenges.</p>
+        <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta">
+  <div class="container">
+    <h2>See Winner's</h2>
+    <p>To begin playing, create an account or login to your existing account. Start showcasing your skills and win exciting rewards!</p>
+    <a href="winner.html" class="btn btn-primary btn-lg">See Invester's Result</a>
+  </div>
+</section>
+
+
+<!-- About Section -->
+<section id="about" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>About Us</h2>
+        <p>💰 **Instant Cash Rewards**: Win 3x your investment instantly with our easy-to-play games!</p>
+        <p>🎯 **Simple and Exciting**: Enjoy an engaging gaming experience with straightforward rules and big rewards!</p>
+        <p>🔒 **Safe and Secure**: Our platform ensures your transactions and data are protected with top-notch security measures.</p>
+        <p>🌟 **Exclusive Offers**: Be among the first to access special promotions and bonuses only available to our members.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="double1.jpg" alt="About Us Image" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<button id="testButton">Click Me</button>
+<!-- Demo Games Section -->
+<section class="demo-section">
+  <div class="container">
+    <h2>Try Our Exciting Demo Games!</h2>
+    <div class="row">
+      <!-- Game 1 -->
+      <div class="col-md-6 mb-4">
+        <div class="demo-card">
+          <img src="g1.png" alt="Game 1">
+          <div class="demo-card-body">
+            <h3>Epic Adventure</h3>
+            <p>Embark on an epic journey and explore new worlds. Test your skills and become a hero!</p>
+            <a href="registration.html" class="btn btn-primary btn-lg">Play Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Game 2 -->
+      <div class="col-md-6 mb-4">
+        <div class="demo-card">
+          <img src="g2.png" alt="Game 2">
+          <div class="demo-card-body">
+            <h3>Ultimate Challenge</h3>
+            <p>Take on the ultimate challenge and see how you fare against the best. Compete and conquer!</p>
+            <a href="registration.html" class="btn btn-primary btn-lg">Play Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Services Section -->
+<section id="services">
+  <div class="container">
+    <h2 class="text-center">Our Services</h2>
+    <div class="row mt-5">
+      <div class="col-lg-4 mb-4">
+        <div class="card service-card">
+          <div class="card-body">
+            <h4 class="card-title">Skill Challenges</h4>
+            <p class="card-text">Engage in various skill-based challenges to test your abilities.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card service-card">
+          <div class="card-body">
+            <h4 class="card-title">Tournaments</h4>
+            <p class="card-text">Compete in tournaments and climb the leaderboard.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card service-card">
+          <div class="card-body">
+            <h4 class="card-title">Rewards</h4>
+            <p class="card-text">Earn rewards and badges for your achievements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Call to Action Section -->
+<section class="cta">
+  <div class="container">
+    <h2>Get Started</h2>
+    <p>To begin playing, create an account or login to your existing account. Start showcasing your skills and win exciting rewards!</p>
+    <a href="registration.html" class="btn btn-primary btn-lg">Register Now</a>
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+  <div class="container">
+    <h2 class="text-center">Contact Us</h2>
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <form>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" id="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+      <div class="col-md-6 mt-4 mt-md-0">
+        <h4>Contact Information</h4>
+        <p><strong>Email:</strong> doublepro@play.com</p>
+        <p><strong>Phone:</strong> +91 (910) 622-6351</p>
+        <p><strong>Address:</strong> 142 Main Street, Noida , India</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Game of Skills. All rights reserved.</p>
+    <p>Designed with <i class="fa fa-heart text-danger"></i> by AR</p>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="ai.html">Cookie Policy</a>
+      <a href="#">Support</a>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="scripts.js"></script>
+
+<script>
+/* window.onload = function() {
+  console.log('Page loaded'); // Check if this logs to the console
+  const alert1 = document.getElementById('dynamicAlert');
+  const alert2 = document.getElementById('registrationAlert');
+
+  function showAlert(element) {
+    console.log('Showing alert:', element.id); // Check which alert is being shown
+    element.style.opacity = 1;
+    setTimeout(() => {
+      element.style.opacity = 0;
+    }, 5000); // Fade out after 5 seconds
+  }
+
+  showAlert(alert1);
+
+  setTimeout(() => {
+    alert2.style.display = 'block';
+    showAlert(alert2);
+  }, 9000); // Delay showing the registration alert
+}
+*/
+document.getElementById('testButton').addEventListener('click', function() {
+            alert('Button clicked!');
+        });
+  </script>
+</body>
+</html>

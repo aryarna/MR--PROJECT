@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make Payment - Game of Skills</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Custom styles */
+    body {
+      background-color: black;
+      color: #343a40;
+      font-family: Arial, sans-serif;
+    }
+    .navbar-brand img {
+      max-height: 250px; /* Adjusted height for the logo */
+      max-width: 130px;
+      width: auto; /* Maintain aspect ratio */
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color:#fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    .btn-pay {
+      font-size: 1.25rem;
+      padding: 10px 20px;
+    }
+    /* Center QR Code */
+    .qr-code {
+      text-align: center;
+    }
+    /* Header and Footer styles */
+    .navbar {
+      background-color: black; /* Dark background */
+      color: #343a40;
+    }
+    footer {
+      background-color: black;
+      color: white;
+      padding: 20px 0;
+    }
+    footer a {
+      color: white;
+      margin-right: 15px;
+    }
+    footer a:hover {
+      color: lightgray;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+ 
+    <a class="navbar-brand" href="#"><img src="double1.jpg" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.html">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="user.html">Profile</a>
+        </li>
+      </ul>
+    </div>
+ 
+</nav>
+
+<!-- Main Content -->
+<div class="container">
+  <h2 class="text-center">Make Payment</h2>
+  <form id="paymentForm">
+    <div class="form-group">
+      <label for="name">Name <span style="color: red;">*</span></label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number <span style="color: red;">*</span></label>
+      <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
+      <small class="form-text text-muted">Must be 10 digits (India only).</small>
+    </div>
+    <div class="form-group">
+      <label for="email">Email <span style="color: red;">*</span></label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password <span style="color: red;">*</span></label>
+      <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+      <label for="username">Username <span style="color: red;">*</span></label>
+      <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount <span style="color: red;">*</span></label>
+      <input type="number" class="form-control" id="amount" name="amount" required>
+    </div>
+    <div class="form-group qr-code">
+      <label for="qrCode">Scan QR Code</label><br>
+      <img src="mast.jpg" alt="Google Pay QR Code" width="200">
+    </div>
+    <div class="form-group">
+      <label for="transactionId">Transaction ID <span style="color: red;">*</span></label>
+      <input type="number" class="form-control" id="transactionId" name="transactionId" pattern="[0-9]{12}" maxlength="12" required>
+      <small class="form-text text-muted">Must be 12 digits.</small>
+    </div>
+    <div class="form-group">
+      <label for="upiId">Your UPI ID <span style="color: red;">*</span></label>
+      <input type="text" class="form-control" id="upiId" name="upiId" required>
+    </div>
+    <button type="submit" id="payNowBtn" class="btn btn-primary btn-pay">Pay Now</button>
+    <button type="button" id="playNowBtn" class="btn btn-secondary btn-pay" style="display:none;">Now Play</button>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+  <p>&copy; 2024 Game of Skills. All rights reserved.</p>
+  <div>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Support</a>
+  </div>
+</footer>
+
+<!-- JavaScript libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+  import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyARxYvtfsCgbhvP5srmOxv9jZ9EqoOKWsA",
+    authDomain: "moneyproject-7c560.firebaseapp.com",
+    projectId: "moneyproject-7c560",
+    storageBucket: "moneyproject-7c560.appspot.com",
+    messagingSenderId: "270202522248",
+    appId: "1:270202522248:web:b4cc925df9bc3169eaed3d",
+    measurementId: "G-H53TG5NGY6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Function to validate form fields
+  function validateForm() {
+    const name = document.getElementById('name').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value;
+    const amount = document.getElementById('amount').value;
+    const transactionId = document.getElementById('transactionId').value;
+    const upiId = document.getElementById('upiId').value;
+
+    if (name.trim() === '' || phoneNumber.trim() === '' || email.trim() === '' ||
+        password.trim() === '' || username.trim() === '' || amount.trim() === '' ||
+        transactionId.trim() === '' || upiId.trim() === '') {
+      alert('Please fill out all required fields.');
+      return false;
+    }
+
+    if (!/^\d{10}$/.test(phoneNumber)) {
+      alert('Phone number must be a 10-digit number.');
+      return false;
+    }
+
+    if (!/^\d{12}$/.test(transactionId)) {
+      alert('Transaction ID must be a 12-digit number.');
+      return false;
+    }
+
+    return true;
+  }
+
+  // Event listener for form submission
+  document.getElementById('paymentForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    const name = document.getElementById('name').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value;
+    const amount = document.getElementById('amount').value;
+    const transactionId = document.getElementById('transactionId').value;
+    const upiId = document.getElementById('upiId').value;
+
+    try {
+      // Add a new document with a generated ID
+      await setDoc(doc(db, "payments", transactionId), {
+        name: name,
+        phoneNumber: phoneNumber,
+        email: email,
+        password: password,
+        username: username,
+        amount: amount,
+        transactionId: transactionId,
+        upiId: upiId
+      });
+
+      console.log("Document written with ID: ", transactionId);
+      alert("Payment information saved successfully!");
+      document.getElementById('payNowBtn').style.display = 'none';
+      document.getElementById('playNowBtn').style.display = 'block';
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert("An error occurred while saving the payment information. Please try again.");
+    }
+  });
+
+
+  
+   // Event listener for "Play Now" button
+   document.getElementById("playNowBtn").addEventListener('click', function() {
+    window.location.href = 'play.html'; // Navigate to play.html
+  });
+</script>
+
+</body>
+</html>

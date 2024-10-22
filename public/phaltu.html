@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags and title -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game of Skills</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: black; /* Shiny black background */
+      color: white; /* White text color */
+    }
+
+    .navbar {
+      background-color: black !important; /* Black navbar */
+    }
+
+    .navbar-brand {
+      padding: 0;
+    }
+
+    .navbar-brand img {
+      max-height: 250px; /* Adjusted height for the logo */
+      max-width: 130px;
+      width: auto; /* Maintain aspect ratio */
+    }
+
+    .navbar-nav .nav-link {
+      color: white !important; /* White text color for navbar links */
+    }
+
+    #hero {
+      min-height: 100vh; /* Ensure hero section covers full viewport height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative; /* Required for positioning the alert */
+    }
+
+    #hero h1 {
+      font-size: 3.5rem; /* Adjust the font size of the welcome heading */
+      margin-bottom: 20px;
+    }
+
+    #hero .lead {
+      font-size: 1.5rem; /* Adjust the font size of the lead paragraph */
+    }
+
+    footer {
+      background-color: black; /* Black footer */
+      color: white; /* White text color */
+      padding: 20px 0;
+    }
+
+    footer a {
+      color: white; /* White text color for footer links */
+      margin-right: 10px;
+    }
+
+    footer a:hover {
+      color: lightgray; /* Light gray text color on hover */
+      text-decoration: none; /* Remove underline on hover */
+    }
+    #announcement {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .announcement-content {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  #announcement h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFD700; /* Gold color for a festive look */
+  }
+
+  #announcement p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  #announcement button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+    .cta {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    .dynamic-alert {
+      position: fixed; /* Fixed positioning */
+      top: 50%; /* Center vertically */
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center horizontally and vertically */
+      background-color: #1a1a1a; /* Match the background color */
+      color: white;
+      padding: 15px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+      z-index: 1000;
+      text-align: center;
+      font-size: 1.2rem;
+      opacity: 0; /* Start with hidden */
+      transition: opacity 1s;
+      max-width: 300px; /* Set max-width for the alert */
+      width: 100%; /* Make it responsive */
+    }
+
+    .dynamic-alert .btn {
+      margin-top: 10px;
+    }
+
+    .highlight {
+      background-color: #ffcc00; /* Highlight color */
+      color: black; /* Text color for highlighted text */
+      font-weight: bold; /* Make the text bold */
+      padding: 0 5px; /* Add padding for spacing */
+      border-radius: 5px; /* Rounded corners for the highlight */
+    }
+
+    .demo-section {
+      text-align: center;
+      padding: 80px 0;
+    }
+    .demo-section h2 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+    .demo-card {
+      background: #343a40;
+      color: white;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .demo-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .demo-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .demo-card-body {
+      padding: 20px;
+    }
+    .demo-card-body h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .demo-card-body p {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="double1.jpg" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="user.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profile.html">Devloper</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registration.html">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="winner.html">Winner</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ai.html">Another</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Dynamic Alert Section -->
+        <button id="triggerAlert" class="btn btn-warning">Something Special 4U</button>
+        <h1>Welcome to Game of Skills</h1>
+        <p class="lead">Unlock your potential with our skill-based games and challenges.</p>
+        <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Announcement Section -->
+<section id="announcement" class="bg-primary text-light text-center py-5">
+  <div class="container">
+    <div class="announcement-content">
+      <h1>🎉 Big News! 🎉</h1>
+      <p class="lead">🚀 You could WIN a staggering <span class="highlight">₹15,000</span> WITHOUT spending a single rupee! 💸✨</p>
+      <p>Yes, you heard that right! No investment required, just your skills and a bit of luck. Get started now and see if you're the lucky winner!</p>
+      <button id="triggerAlert" class="btn btn-light btn-lg">Play Now for Free!</button>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="text-center py-5">
+  <div class="container">
+    <h2>About Us</h2>
+    <p class="lead">We offer a range of skill-based games to test your abilities and win exciting prizes. Join us now!</p>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card service-card">
+          <div class="card-body">
+            <h5 class="card-title">Game 1</h5>
+            <p class="card-text">An exciting skill-based game with various levels and challenges.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card">
+          <div class="card-body">
+            <h5 class="card-title">Game 2</h5>
+            <p class="card-text">Test your skills in this action-packed game with amazing rewards.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card service-card">
+          <div class="card-body">
+            <h5 class="card-title">Game 3</h5>
+            <p class="card-text">Challenge yourself with this strategy game and win big!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call-to-Action Section -->
+<section class="cta">
+  <div class="container">
+    <h2>Ready to Play?</h2>
+    <p>Join now and start winning amazing prizes!</p>
+    <a href="#contact" class="btn btn-primary btn-lg">Get Started</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <p>&copy; 2024 Game of Skills. All Rights Reserved.</p>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#terms">Terms of Service</a>
+  </div>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    // Function to show the dynamic alert
+    document.getElementById('triggerAlert').addEventListener('click', function() {
+        const alertBox = document.createElement('div');
+        alertBox.className = 'dynamic-alert';
+        alertBox.innerHTML = `
+            <h3>Do you want to earn <span class="highlight">3x</span> money through this game?</h3>
+            <button class="btn btn-success" onclick="window.location.href='demo.html'">Retry</button>
+            <button class="btn btn-danger" onclick="this.parentElement.style.opacity='0'">Cancel</button>
+        `;
+        document.body.appendChild(alertBox);
+        setTimeout(() => alertBox.style.opacity = '1', 10); // Show alert after adding it to the body
+    });
+</script>
+
+</body>
+</html>
+

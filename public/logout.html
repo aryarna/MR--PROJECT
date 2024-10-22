@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logout</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>You have been logged out</h1>
+    <a href="index.html" class="btn btn-primary">Login Again</a>
+  </div>
+
+  <script>
+     document.addEventListener('DOMContentLoaded', function () {
+  const contentElement = document.getElementById('content');
+
+  // Function to load content based on URL path
+  function navigateTo(pathname) {
+    let page = pathname.substring(1); // Remove leading slash
+    if (!page || page === '/') {
+      page = 'index'; // Default to index.html if no specific path
+    }
+    fetchPage(`${page}.html`, contentElement);
+  }
+
+  // Function to fetch and replace content in the element
+  function fetchPage(page, element) {
+    fetch(page)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Page not found');
+        }
+        return response.text();
+      })
+      .then(html => {
+        element.innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error fetching page:', error);
+        element.innerHTML = '<p>Page not found</p>';
+      });
+  }
+
+  // Initial navigation based on current URL
+  navigateTo(window.location.pathname);
+
+  // Handle navigation for Login Again button or any other dynamic links
+  contentElement.addEventListener('click', function (event) {
+    const target = event.target;
+    if (target.matches('#loginAgainBtn')) {
+      navigateTo('index.html'); // Example: Navigate to index.html
+    }
+    // Add more conditions for other dynamic navigation links/buttons if needed
+  });
+
+  // Handle navigation based on URL changes
+  window.addEventListener('popstate', function () {
+    navigateTo(location.pathname);
+  });
+});
+
+  </script>
+</body>
+</html>

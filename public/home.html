@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game of Skills - Home</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Custom styles */
+    body {
+      background-color: black;
+      color: #343a40;
+      font-family: Arial, sans-serif;
+    }
+    .navbar-brand img {
+      max-height: 250px; /* Adjusted height for the logo */
+      max-width: 130px;
+      width: auto; /* Maintain aspect ratio */
+    }
+    .welcome-section {
+      text-align: center;
+      padding: 50px 0;
+    }
+    .welcome-section h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .welcome-section p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+    .welcome-section .btn {
+      font-size: 1.25rem;
+      padding: 10px 20px;
+    }
+    .photo-section {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .photo-section img {
+      max-width: 100%;
+      height: auto;
+      max-height: 800px; /* Ensure the image fits within the container */
+      width: auto;
+    }
+    .features {
+      padding: 60px 0;
+      text-align: center;
+    }
+    .features h2 {
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+    .features .card {
+      transition: transform 0.3s;
+    }
+    .features .card:hover {
+      transform: translateY(-10px);
+    }
+    .cta {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 60px 0;
+    }
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .cta p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+    .info-collection {
+      background-color: #f8f9fa;
+      padding: 60px 0;
+      text-align: center;
+    }
+    .info-collection h2 {
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+    .info-collection .form-group {
+      margin-bottom: 20px;
+    }
+    .info-collection .form-control {
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+    }
+    .info-collection button {
+      font-size: 1.25rem;
+      padding: 10px 20px;
+    }
+    footer {
+      background-color: black;
+      color: white;
+      padding: 20px 0;
+    }
+    footer a {
+      color: white;
+      margin-right: 15px;
+    }
+    footer a:hover {
+      color: lightgray;
+      text-decoration: none;
+    }
+
+    /* Responsive design for mobile screens */
+    @media (max-width: 767.98px) {
+      .welcome-section h1 {
+        font-size: 2.5rem;
+      }
+      .welcome-section p {
+        font-size: 1rem;
+      }
+      .welcome-section .btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
+      .features h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Responsive design for tablet screens */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .welcome-section h1 {
+        font-size: 3rem;
+      }
+      .welcome-section p {
+        font-size: 1.25rem;
+      }
+      .welcome-section .btn {
+        font-size: 1.25rem;
+        padding: 10px 20px;
+      }
+      .features h2 {
+        font-size: 2.25rem;
+      }
+    }
+
+    /* Responsive design for laptop screens */
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      .welcome-section h1 {
+        font-size: 3.5rem;
+      }
+      .welcome-section p {
+        font-size: 1.5rem;
+      }
+      .welcome-section .btn {
+        font-size: 1.5rem;
+        padding: 12px 24px;
+      }
+      .features h2 {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Responsive design for larger desktop screens */
+    @media (min-width: 1200px) {
+      .welcome-section h1 {
+        font-size: 4rem;
+      }
+      .welcome-section p {
+        font-size: 1.5rem;
+      }
+      .welcome-section .btn {
+        font-size: 1.5rem;
+        padding: 14px 28px;
+      }
+      .features h2 {
+        font-size: 2.5rem;
+      }
+    }
+
+
+    .demo-section {
+      text-align: center;
+      padding: 80px 0;
+    }
+    .demo-section h2 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+    .demo-card {
+      background: #343a40;
+      color: white;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .demo-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .demo-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .demo-card-body {
+      padding: 20px;
+    }
+    .demo-card-body h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .demo-card-body p {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+
+
+    
+
+    #announcement {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .announcement-content {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  #announcement h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFD700; /* Gold color for a festive look */
+  }
+
+  #announcement p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  #announcement button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .highlight {
+      background-color: #ffcc00; /* Highlight color */
+      color: black; /* Text color for highlighted text */
+      font-weight: bold; /* Make the text bold */
+      padding: 0 5px; /* Add padding for spacing */
+      border-radius: 5px; /* Rounded corners for the highlight */
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+  <div class="container">
+    <a class="navbar-brand" href="home.html"><img src="double1.jpg" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="user.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.html">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Welcome Section -->
+<section class="welcome-section">
+  <div class="container">
+    <h1>Welcome to Game of Skills</h1>
+    <p>Unlock your potential with our skill-based games and challenges.</p>
+    <a href="#features" class="btn btn-primary btn-lg">Discover More</a>
+  </div>
+</section>
+
+<!-- Announcement Section 
+<section id="announcement" class="bg-primary text-light text-center py-5">
+  <div class="container">
+    <div class="announcement-content">
+      <h1>🎉 Big News! 🎉</h1>
+      <p class="lead">🚀 You could WIN a staggering <span class="highlight">₹15,000</span> WITHOUT spending a single rupee! 💸✨</p>
+      <p>Yes, you heard that right! <span class="highlight"> No investment required, just your skills and a bit of luck.</span> Get started now and see if you're the lucky winner!</p>
+      <button id="triggerAlert" class="btn btn-light btn-lg"> <a href="tic.html"> Play Now for Free! </a></button>
+    </div>
+  </div>
+</section>  -->
+
+<!-- Photo Section -->
+<section class="photo-section">
+  <img src="double2.jpg" alt="Game of Skills">
+</section>
+
+
+
+<!--
+
+<section class="cta">
+  <div class="container">
+    <h2>Want To Play Demo Game?</h2>
+    <p>Try out our demo game and get a feel for the action-packed gameplay!</p>
+    <a href="demo.html" class="btn btn-primary btn-lg">Start Demo Game</a>
+  </div>
+</section>
+-->
+
+<!-- Demo Games Section -->
+<section class="demo-section">
+  <div class="container">
+    <h2>Try Our Exciting Demo Games!</h2>
+    <div class="row">
+      <!-- Game 1 -->
+      <div class="col-md-6 mb-4">
+        <div class="demo-card">
+          <img src="g1.png" alt="Game 1">
+          <div class="demo-card-body">
+            <h3>Epic Adventure</h3>
+            <p>Embark on an epic journey and explore new worlds. Test your skills and become a hero!</p>
+            <a href="demo.html" class="btn btn-primary btn-lg">Play Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Game 2 -->
+      <div class="col-md-6 mb-4">
+        <div class="demo-card">
+          <img src="g2.png" alt="Game 2">
+          <div class="demo-card-body">
+            <h3>Ultimate Challenge</h3>
+            <p>Take on the ultimate challenge and see how you fare against the best. Compete and conquer!</p>
+            <a href="tic.html" class="btn btn-primary btn-lg">Play Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Features Section -->
+<section class="features" id="features">
+  <div class="container">
+    <h2>Features</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <i class="fas fa-gamepad fa-3x mb-3"></i>
+            <h4 class="card-title">Skill Challenges</h4>
+            <p class="card-text">Engage in various skill-based challenges to test your abilities.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <i class="fas fa-trophy fa-3x mb-3"></i>
+            <h4 class="card-title">Tournaments</h4>
+            <p class="card-text">Compete in tournaments and climb the leaderboard.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <i class="fas fa-gift fa-3x mb-3"></i>
+            <h4 class="card-title">Rewards</h4>
+            <p class="card-text">Earn rewards and badges for your achievements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta">
+  <div class="container">
+    <h2>Get Started , Won 3x Money !</h2>
+    <p> Start showcasing your skills and win exciting rewards!</p>
+    <a href="payment.html" class="btn btn-primary btn-lg">Now Next</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+  <div class="container">
+    <p>&copy; 2024 Game of Skills. All rights reserved.</p>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Support</a>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

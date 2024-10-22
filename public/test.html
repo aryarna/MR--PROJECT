@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloth Shop</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 15px 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .product-card {
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .buy-now {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .buy-now:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="text-center">Cloth Shop</h1>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">Cloth Shop</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" id="cart-icon">Cart (<span id="cart-count">0</span>)</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-4">
+        <h2 class="text-center mb-4">Featured Products</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card product-card" onclick="showModal('shirt')">
+                    <img src="https://images.pexels.com/photos/736874/pexels-photo-736874.jpeg" class="card-img-top" alt="Shirt">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Stylish Shirt</h5>
+                        <p class="card-text">$25.00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card" onclick="showModal('jeans')">
+                    <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg" class="card-img-top" alt="Jeans">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Comfortable Jeans</h5>
+                        <p class="card-text">$40.00</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more products here -->
+        </div>
+    </main>
+
+    <!-- Modal for Shirt -->
+    <div id="shirtModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Stylish Shirt</h5>
+                    <button type="button" class="close" onclick="closeModal('shirtModal')" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.pexels.com/photos/736874/pexels-photo-736874.jpeg" alt="Shirt Image 1">
+                    <img src="https://images.pexels.com/photos/736877/pexels-photo-736877.jpeg" alt="Shirt Image 2">
+                    <img src="https://images.pexels.com/photos/736876/pexels-photo-736876.jpeg" alt="Shirt Image 3">
+                    <p>Details about the stylish shirt. It is made from high-quality fabric and offers a comfortable fit.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="buy-now" onclick="addToCart('Stylish Shirt', 25); closeModal('shirtModal')">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Jeans -->
+    <div id="jeansModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Comfortable Jeans</h5>
+                    <button type="button" class="close" onclick="closeModal('jeansModal')" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg" alt="Jeans Image 1">
+                    <img src="https://images.pexels.com/photos/459227/pexels-photo-459227.jpeg" alt="Jeans Image 2">
+                    <img src="https://images.pexels.com/photos/459228/pexels-photo-459228.jpeg" alt="Jeans Image 3">
+                    <p>Details about the comfortable jeans. They are crafted to provide the perfect fit and durability.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="buy-now" onclick="addToCart('Comfortable Jeans', 40); closeModal('jeansModal')">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Cloth Shop. All rights reserved.</p>
+        <p><a href="#" class="text-white">Contact Us</a></p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const cart = [];
+
+        function addToCart(productName, price) {
+            cart.push({ productName, price });
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        function showModal(product) {
+            $('#' + product + 'Modal').modal('show');
+        }
+
+        function closeModal(modalId) {
+            $('#' + modalId).modal('hide');
+        }
+    </script>
+</body>
+</html>

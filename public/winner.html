@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winner Results</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <style>
+   body {
+      background-color: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .navbar {
+      background-color:black;
+    }
+
+    .navbar-brand img {
+      height: 100px;
+    }
+
+    .profile-photo {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    .table {
+      background-color: #333;
+      color: white;
+    }
+
+    .table thead th {
+      background-color: #444;
+    }
+
+    .table tbody tr:nth-child(even) {
+      background-color: #555;
+    }
+
+    .table tbody tr:hover {
+      background-color: #666;
+    }
+
+    .amount {
+      color: #00ff00; /* Green color for amounts */
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 10px 0;
+    }
+
+    .footer-links a {
+      color: #00ff00;
+      margin-right: 15px;
+    }
+  </style>
+</head>
+<body>
+
+
+
+<!-- Header and Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="index.html">
+    <img src="double1.jpg" alt="Logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="payment.html">Play</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="user.html">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="demo.html">Play Demo</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+  <h2 class="text-center">Winner Results</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Profile Photo</th>
+        <th>Username</th>
+        <th>Date</th>
+        <th>Score</th>
+        <th>Result</th>
+        <th>Investing Money (INR)</th>
+        <th>Winning Amount (INR)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Example rows -->
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Ravi Kumar</td>
+        <td>2024-07-21</td>
+        <td>10</td>
+        <td>Win</td>
+        <td class="amount">₹300</td>
+        <td class="amount">₹900</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Amit Sharma</td>
+        <td>2024-07-21</td>
+        <td>15</td>
+        <td>Win</td>
+        <td class="amount">₹350</td>
+        <td class="amount">₹1050</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Vikash Yadav</td>
+        <td>2024-07-21</td>
+        <td>20</td>
+        <td>Loss</td>
+        <td class="amount">₹200</td>
+        <td class="amount">₹0</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Sunil Patel</td>
+        <td>2024-07-21</td>
+        <td>18</td>
+        <td>Win</td>
+        <td class="amount">₹400</td>
+        <td class="amount">₹1200</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/5.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Suresh Reddy</td>
+        <td>2024-07-21</td>
+        <td>12</td>
+        <td>Win</td>
+        <td class="amount">₹250</td>
+        <td class="amount">₹750</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/6.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Rajesh Singh</td>
+        <td>2024-07-21</td>
+        <td>16</td>
+        <td>Loss</td>
+        <td class="amount">₹150</td>
+        <td class="amount">₹0</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/7.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Manoj Gupta</td>
+        <td>2024-07-21</td>
+        <td>22</td>
+        <td>Win</td>
+        <td class="amount">₹300</td>
+        <td class="amount">₹900</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/8.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Pradeep Sharma</td>
+        <td>2024-07-21</td>
+        <td>14</td>
+        <td>Win</td>
+        <td class="amount">₹200</td>
+        <td class="amount">₹600</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/9.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Deepak Agarwal</td>
+        <td>2024-07-21</td>
+        <td>19</td>
+        <td>Loss</td>
+        <td class="amount">₹350</td>
+        <td class="amount">₹0</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/10.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Kumar Saurabh</td>
+        <td>2024-07-21</td>
+        <td>11</td>
+        <td>Win</td>
+        <td class="amount">₹250</td>
+        <td class="amount">₹750</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Sandeep Yadav</td>
+        <td>2024-07-21</td>
+        <td>21</td>
+        <td>Win</td>
+        <td class="amount">₹350</td>
+        <td class="amount">₹1050</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Ajay Mehta</td>
+        <td>2024-07-21</td>
+        <td>13</td>
+        <td>Loss</td>
+        <td class="amount">₹200</td>
+        <td class="amount">₹0</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/13.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Raj Kumar</td>
+        <td>2024-07-21</td>
+        <td>17</td>
+        <td>Win</td>
+        <td class="amount">₹300</td>
+        <td class="amount">₹900</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/14.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Rohit Singh</td>
+        <td>2024-07-21</td>
+        <td>23</td>
+        <td>Win</td>
+        <td class="amount">₹350</td>
+        <td class="amount">₹1050</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Vijay Patel</td>
+        <td>2024-07-21</td>
+        <td>25</td>
+        <td>Loss</td>
+        <td class="amount">₹400</td>
+        <td class="amount">₹0</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/16.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Sunil Sharma</td>
+        <td>2024-07-21</td>
+        <td>28</td>
+        <td>Win</td>
+        <td class="amount">₹300</td>
+        <td class="amount">₹900</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/17.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Ashok Kumar</td>
+        <td>2024-07-21</td>
+        <td>26</td>
+        <td>Loss</td>
+        <td class="amount">₹350</td>
+        <td class="amount">₹0</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/18.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Jitendra Kumar</td>
+        <td>2024-07-21</td>
+        <td>27</td>
+        <td>Win</td>
+        <td class="amount">₹400</td>
+        <td class="amount">₹1200</td>
+      </tr>
+      <tr>
+        <td><img src="https://randomuser.me/api/portraits/men/19.jpg" alt="Profile Photo" class="profile-photo"></td>
+        <td>Sanjay Patel</td>
+        <td>2024-07-21</td>
+        <td>28</td>
+        <td>Win</td>
+        <td class="amount">₹300</td>
+        <td class="amount">₹900</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Footer -->
+<footer class="text-center">
+  <div class="footer-links">
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <p>&copy; 2024 Your Company. All rights reserved.</p>
+</footer>
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

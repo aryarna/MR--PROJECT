@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Stakes Poker Showdown</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #222, #000);
+            color: #ecf0f1;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+            width: 800px;
+        }
+        h1 {
+            color: #e74c3c;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        .card {
+            width: 120px;
+            height: 180px;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 15px;
+            font-size: 36px;
+            text-align: center;
+            line-height: 180px;
+            background: #fff;
+            color: #000;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+        }
+        .button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #e74c3c;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 1.2em;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .button:hover {
+            background: #c0392b;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+        }
+        .button:disabled {
+            background: #7f8c8d;
+            cursor: not-allowed;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #f1c40f;
+            margin-top: 30px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+        .alert {
+            margin-top: 15px;
+        }
+        #deal {
+            animation: shake 1s;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+        #scoreboard {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        #turn {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #e74c3c;
+        }
+        #roundCounter {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #f1c40f;
+        }
+        #finalMessage {
+            font-size: 2em;
+            color: #e74c3c;
+            margin-top: 30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>High Stakes Poker Showdown</h1>
+        <p><strong>Player 1:</strong> AI (Automatic)</p>
+        <p><strong>Player 2:</strong> You (Manual)</p>
+        <div id="turn">Player 2's Turn</div>
+        <div id="roundCounter">Round: 1/30</div>
+        <div id="game">
+            <div id="player1" class="card">?</div>
+            <div id="player2" class="card">?</div>
+            <br>
+            <button id="deal" class="button">Deal Cards</button>
+            <div id="result" class="result"></div>
+            <div id="scoreboard">
+                <h2>Scoreboard</h2>
+                <div id="player1Score">Player 1: 0</div>
+                <div id="player2Score">Player 2: 0</div>
+            </div>
+        </div>
+        <div id="finalMessage"></div>
+    </div>
+
+    <script>
+        const suits = ['♠', '♥', '♦', '♣'];
+        const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+        const playerScores = { player1: 0, player2: 0 };
+        let currentPlayer = 'player2';  // Start with Player 2
+        let roundCounter = 1;  // Start from Round 1
+        const maxRounds = 30;
+
+        function getRandomCard() {
+            const suit = suits[Math.floor(Math.random() * suits.length)];
+            const rank = ranks[Math.floor(Math.random() * ranks.length)];
+            return `${rank}${suit}`;
+        }
+
+        function getCardValue(card) {
+            const rank = card.slice(0, -1);
+            if (['J', 'Q', 'K'].includes(rank)) return 10;
+            if (rank === 'A') return 11;
+            return parseInt(rank, 10);
+        }
+
+        function updateScoreboard() {
+            document.getElementById('player1Score').innerText = `Player 1: ${playerScores.player1}`;
+            document.getElementById('player2Score').innerText = `Player 2: ${playerScores.player2}`;
+        }
+
+        function showAlert(message, color) {
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-warning';
+            alert.style.backgroundColor = color;
+            alert.innerText = message;
+            document.body.appendChild(alert);
+            setTimeout(() => alert.remove(), 3000);
+        }
+
+        function updateTurnDisplay() {
+            const turnDisplay = document.getElementById('turn');
+            turnDisplay.innerText = `${currentPlayer === 'player2' ? 'Player 2\'s' : 'Player 1\'s'} Turn`;
+            turnDisplay.style.color = currentPlayer === 'player2' ? '#3498db' : '#e74c3c';
+        }
+
+        function updateRoundCounter() {
+            document.getElementById('roundCounter').innerText = `Round: ${roundCounter}/${maxRounds}`;
+        }
+
+        function endTurn() {
+            if (currentPlayer === 'player2') {
+                currentPlayer = 'player1';
+                document.getElementById('deal').disabled = true;
+                setTimeout(() => {
+                    aiPlay();
+                    determineWinner();
+                }, 1000); // AI plays after a short delay
+            } else {
+                currentPlayer = 'player2';
+                document.getElementById('deal').disabled = false;
+                updateTurnDisplay();
+            }
+        }
+
+        function aiPlay() {
+            const card1 = getRandomCard();
+            document.getElementById('player1').innerText = card1;
+        }
+
+        function determineWinner() {
+            const card1 = document.getElementById('player1').innerText;
+            const card2 = document.getElementById('player2').innerText;
+
+            const value1 = getCardValue(card1);
+            const value2 = getCardValue(card2);
+
+            let resultText;
+            let resultColor;
+            if (value1 > value2) {
+                resultText = 'Player 1 Wins! 🎉';
+                resultColor = '#e74c3c';
+                playerScores.player1 += 1;
+                showAlert('Player 1 wins the round!', '#e74c3c');
+            } else if (value2 > value1) {
+                resultText = 'Player 2 Wins! 🎉';
+                resultColor = '#3498db';
+                playerScores.player2 += 1;
+                showAlert('Player 2 wins the round!', '#3498db');
+            } else {
+                resultText = 'It\'s a Tie! 🤝';
+                resultColor = '#f39c12';
+                showAlert('The round is a tie!', '#f39c12');
+            }
+            document.getElementById('result').innerText = resultText;
+            document.getElementById('result').style.color = resultColor;
+
+            updateScoreboard();
+            endTurn();
+        }
+
+        function handleDealButton() {
+            if (roundCounter > maxRounds) {
+                document.getElementById('deal').disabled = true;
+                document.getElementById('finalMessage').innerText = 'Game Over! Thanks for playing!';
+                document.getElementById('finalMessage').style.display = 'block';
+                return;
+            }
+
+            const card2 = getRandomCard();
+            document.getElementById('player2').innerText = card2;
+
+            document.getElementById('deal').disabled = true;
+            document.getElementById('deal').id = 'waiting';
+            document.getElementById('waiting').innerText = 'Please wait...';
+
+            setTimeout(() => {
+                document.getElementById('waiting').id = 'deal';
+                document.getElementById('deal').innerText = 'Deal Cards';
+                roundCounter += 1;
+                updateRoundCounter();
+                updateTurnDisplay();
+                endTurn();
+            }, 2000); // Wait for 2 seconds before proceeding
+        }
+
+        document.getElementById('deal').addEventListener('click', handleDealButton);
+        updateTurnDisplay();
+        updateRoundCounter();
+    </script>
+</body>
+</html>

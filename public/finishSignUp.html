@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+</head>
+<body>
+    <h1>Verify OTP</h1>
+    <form id="verifyForm">
+        <label for="verificationCode">Verification Code:</label>
+        <input type="text" id="verificationCode" required>
+        <button type="submit">Verify</button>
+    </form>
+
+    <script src="verify.js"></script>
+</body>
+</html>

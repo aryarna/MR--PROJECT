@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags and title -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game of Skills</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: black; /* Shiny black background */
+      color: white; /* White text color */
+    }
+
+    .navbar {
+      background-color: black !important; /* Black navbar */
+    }
+
+    .navbar-brand {
+      padding: 0;
+    }
+
+    .navbar-brand img {
+      max-height: 250px; /* Adjusted height for the logo */
+      max-width: 130px;
+      width: auto; /* Maintain aspect ratio */
+    }
+
+    .navbar-nav .nav-link {
+      color: white !important; /* White text color for navbar links */
+    }
+
+    #hero {
+      min-height: 100vh; /* Ensure hero section covers full viewport height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative; /* Required for positioning the alert */
+    }
+
+    #hero h1 {
+      font-size: 3.5rem; /* Adjust the font size of the welcome heading */
+      margin-bottom: 20px;
+      position: relative; /* Ensure relative positioning for the alert */
+      z-index: 1; /* Ensure the h1 is above other content */
+    }
+
+    #hero .lead {
+      font-size: 1.5rem; /* Adjust the font size of the lead paragraph */
+    }
+
+    footer {
+      background-color: black; /* Black footer */
+      color: white; /* White text color */
+      padding: 20px 0;
+    }
+
+    footer a {
+      color: white; /* White text color for footer links */
+      margin-right: 10px;
+    }
+
+    footer a:hover {
+      color: lightgray; /* Light gray text color on hover */
+      text-decoration: none; /* Remove underline on hover */
+    }
+
+    /* Services Section Styles */
+    #services {
+      background-color: #1a1a1a; /* Dark gray background */
+      color: white; /* White text color */
+      padding: 80px 0;
+    }
+
+    #services h2 {
+      color: white; /* White text color for section heading */
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .service-card {
+      background-color: black; /* Dark gray card background */
+      border: none;
+      color: white; /* White text color */
+    }
+
+    .service-card .card-title {
+      color: white; /* White text color for card title */
+    }
+
+    .service-card .card-text {
+      color: lightgray; /* Light gray text color for card text */
+    }
+
+    .cta {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    .dynamic-alert {
+      position: fixed; /* Fixed positioning */
+      top: 50%; /* Center vertically */
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center horizontally and vertically */
+      background-color: #1a1a1a; /* Match the background color */
+      color: white;
+      padding: 15px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+      z-index: 1000;
+      text-align: center;
+      font-size: 1.2rem;
+      opacity: 0; /* Start with hidden */
+      transition: opacity 1s;
+    }
+
+    .highlight {
+      background-color: #ffcc00; /* Highlight color */
+      color: black; /* Text color for highlighted text */
+      font-weight: bold; /* Make the text bold */
+      padding: 0 5px; /* Add padding for spacing */
+      border-radius: 5px; /* Rounded corners for the highlight */
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="double1.jpg" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="user.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profile.html">Developer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registration.html">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="winner.html">Winner</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ai.html">Another</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <marquee>  <h4>💰 **Instant Cash Rewards**: Win 3x your investment instantly with our easy-to-play games!</h4> </marquee>
+        <!-- Dynamic Alert Section -->
+        <div id="dynamicAlert" class="dynamic-alert">
+          <span class="alert-icon">🎉</span> Congratulations! You have a <span class="highlight">chance to win unlimited money without investing!</span> <span class="alert-icon">🎉</span>
+        </div>
+        <div id="registrationAlert" class="dynamic-alert" style="display: none;">
+          <span class="alert-icon">⚠️</span> Don't miss out! <span class="highlight">Register</span> or <span class="highlight">Login</span> to start playing now! <span class="alert-icon">⚠️</span>
+        </div>
+        <h1>Welcome to Game of Skills</h1>
+        <p class="lead">Unlock your potential with our skill-based games and challenges.</p>
+        <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <p>&copy; 2024 Game of Skills. All rights reserved.</p>
+    <a href="#terms">Terms of Service</a> | 
+    <a href="#privacy">Privacy Policy</a> | 
+    <a href="#contact">Contact Us</a>
+  </div>
+</footer>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+window.onload = function() {
+  const alert1 = document.getElementById('dynamicAlert');
+  const alert2 = document.getElementById('registrationAlert');
+
+  // Function to display alerts
+  function showAlert(element) {
+    element.style.opacity = 1;
+    setTimeout(() => {
+      element.style.opacity = 0;
+    }, 3000); // Fade out after 3 seconds
+  }
+
+  // Display the main alert
+  showAlert(alert1);
+
+  // Display the registration alert after the main alert
+  setTimeout(() => {
+    alert2.style.display = 'block';
+    showAlert(alert2);
+  }, 3500); // Delay showing the registration alert
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom styles */
+    body {
+      background-color: black; /* Dark background */
+      color: #fff; /* White text color */
+      font-family: Arial, sans-serif; /* Font stack */
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: black; /* Dark navbar background */
+      padding: 10px 0;
+      border-bottom: 2px solid #007bff; /* Navbar bottom border */
+      z-index: 1000; /* Ensure navbar is on top */
+      position: fixed; /* Fix navbar position */
+      width: 100%; /* Full width */
+      top: 0; /* Stick to the top */
+    }
+
+    .navbar-brand img {
+      max-height: 80px; /* Adjusted logo max height for mobile screens */
+      width: auto;
+    }
+
+    .navbar-toggler {
+      border-color: #007bff; /* Toggler border color */
+    }
+
+    .navbar-toggler-icon {
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"%3E%3Cpath stroke="%23fff" stroke-width="2" d="M5 7h20M5 15h20M5 23h20"/%3E%3C/svg%3E'); /* Custom toggler icon */
+    }
+
+    /* Profile section */
+    #profile {
+      padding: 80px 15px 30px; /* Adjusted top padding to avoid overlap */
+      margin-top: 70px; /* Ensure profile section starts below the fixed navbar */
+    }
+
+    .card {
+      background-color: black; /* Dark card background */
+      border: none; /* No border */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Card shadow */
+    }
+
+    .card-title {
+      color: #007bff; /* Primary text color */
+    }
+
+    .form-control {
+      background-color: #555; /* Input background */
+      color: black; /* Input text color */
+      border: 1px solid #777; /* Input border */
+    }
+
+    .form-control:focus {
+      background-color: #555; /* Input background on focus */
+      border-color: #007bff; /* Focus border color */
+      box-shadow: none; /* Remove focus shadow */
+    }
+
+    .btn-primary {
+      background-color: #007bff; /* Primary button background */
+      border: none; /* No border */
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3; /* Darker shade on hover */
+    }
+
+    .footer {
+      background-color: black; /* Dark footer background */
+      color: #fff; /* Footer text color */
+      padding: 15px 0; /* Reduced padding for mobile screens */
+      text-align: center; /* Center text */
+    }
+
+    .footer a {
+      color: #007bff; /* Footer link color */
+      text-decoration: none; /* No underline */
+    }
+
+    .footer a:hover {
+      text-decoration: underline; /* Underline on hover */
+    }
+
+    .footer ul {
+      list-style: none; /* Remove bullets or dots from the list */
+      padding: 0; /* Remove default padding */
+      margin: 0; /* Remove default margin */
+    }
+
+    /* Profile picture */
+    .profile-picture {
+      width: 150px; /* Adjust the width of the profile picture */
+      height: 150px; /* Adjust the height of the profile picture */
+      border-radius: 50%; /* Rounded shape */
+      object-fit: cover; /* Maintain aspect ratio */
+      margin: auto; /* Center align */
+      display: block; /* Ensure it's displayed as a block element */
+      margin-bottom: 20px; /* Space below the profile picture */
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 576px) {
+      .profile-picture {
+        width: 100px; /* Larger width for small tablets */
+        height: 100px; /* Larger height for small tablets */
+      }
+    }
+
+    @media (min-width: 768px) {
+      .profile-picture {
+        width: 120px; /* Larger width for tablets and up */
+        height: 120px; /* Larger height for tablets and up */
+      }
+
+      #profile {
+        padding: 50px 15px; /* Adjust padding for larger screens */
+        margin-top: 80px; /* Ensure enough space below the fixed navbar */
+      }
+    }
+
+    @media (min-width: 992px) {
+      .profile-picture {
+        width: 150px; /* Larger width for laptops */
+        height: 150px; /* Larger height for laptops */
+      }
+
+      #profile {
+        padding: 70px 15px; /* Adjust padding for larger screens */
+        margin-top: 100px; /* Ensure enough space below the fixed navbar */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="home.html">
+      <img src="double1.jpg" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Profile Section -->
+<section id="profile" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body text-center">
+            <h2 class="card-title mb-4">User Profile</h2>
+            <img src="" id="profileImageDisplay" alt="Profile Picture" class="profile-picture">
+            <h2 class="card-title mb-4" id="profileUsername"></h2>
+          
+            <form id="profileForm">
+              <div class="form-group">
+                <label for="profileName">Name:</label>
+                <input type="text" id="profileNameInput" class="form-control" value="" disabled>
+              </div>
+              <div class="form-group">
+                <label for="profileUsername">Username:</label>
+                <input type="text" id="profileUsernameInput" class="form-control" value="" disabled>
+              </div>
+              <div class="form-group">
+                <label for="profileEmail">Email:</label>
+                <input type="email" id="profileEmailInput" class="form-control" value="" disabled>
+              </div>
+              <div class="form-group">
+                <label for="profilePhone">Phone Number:</label>
+                <input type="tel" id="profilePhoneInput" class="form-control" value="" disabled>
+              </div>
+              <div class="form-group">
+                <label for="profilePassword">Password:</label>
+                <input type="password" id="profilePasswordInput" class="form-control" value="" disabled>
+              </div>
+              <!-- File input for selecting new profile picture -->
+              <div class="form-group">
+                <label for="profileImage">Select New Profile Picture:</label>
+                <input type="file" id="profileImage" class="form-control-file">
+              </div>
+              <!-- Confirm button to update profile picture -->
+              <div class="form-group">
+                <button type="button" id="confirmImageChange" class="btn btn-primary btn-block">Change Profile Picture</button>
+              </div>
+              <!-- Save button to save profile changes -->
+              <button type="submit" class="btn btn-primary btn-block">Save Profile</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>About Us</h5>
+        <p>Information about the company.</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact Us</h5>
+        <p>Contact details.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  function compressImage(file, callback) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        const maxWidth = 400; // Set desired width
+        const maxHeight = 400; // Set desired height
+        let width = img.width;
+        let height = img.height;
+
+        // Calculate new dimensions while maintaining aspect ratio
+        if (width > height) {
+          if (width > maxWidth) {
+            height *= maxWidth / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width *= maxHeight / height;
+            height = maxHeight;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        canvas.toBlob(function(blob) {
+          const newFile = new File([blob], file.name, { type: file.type });
+          callback(newFile);
+        }, file.type);
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  document.getElementById('profileImage').addEventListener('change', function(event) {
+    try {
+      const file = event.target.files[0];
+      if (file) {
+        compressImage(file, function(compressedFile) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            console.log('Compressed image loaded:', e.target.result); // Debugging line
+            document.getElementById('profileImageDisplay').src = e.target.result;
+            localStorage.setItem('tempProfileImage', e.target.result);
+          };
+          reader.readAsDataURL(compressedFile);
+        });
+      } else {
+        console.log('No file selected');
+      }
+    } catch (error) {
+      alert(`Error: ${error.message}`);
+    }
+  });
+
+  document.getElementById('confirmImageChange').addEventListener('click', function() {
+    try {
+      const tempImage = localStorage.getItem('tempProfileImage');
+      if (tempImage) {
+        localStorage.setItem('profileImage', tempImage);
+        localStorage.removeItem('tempProfileImage');
+        alert('Profile picture updated successfully!');
+        document.getElementById('profileImageDisplay').src = tempImage;
+      } else {
+        alert('No new profile picture selected.');
+      }
+    } catch (error) {
+      alert(`Error: ${error.message}`);
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+      const storedImage = localStorage.getItem('profileImage') || 'default_profile.jpg';
+
+      if (storedUser) {
+        document.getElementById('profileNameInput').value = storedUser.name;
+        document.getElementById('profileUsername').innerText = `Hey, ${storedUser.username}`;
+        document.getElementById('profileUsernameInput').value = storedUser.username;
+        document.getElementById('profileEmailInput').value = storedUser.email;
+        document.getElementById('profilePhoneInput').value = storedUser.phone;
+        document.getElementById('profilePasswordInput').value = storedUser.password;
+
+        document.getElementById('profileImageDisplay').src = storedImage;
+      } else {
+        console.log('No user data found in localStorage');
+      }
+    } catch (error) {
+      alert(`Error: ${error.message}`);
+    }
+  });
+
+  document.getElementById('profileForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    try {
+      console.log('Form submission prevented');
+      // Handle form submission as needed
+    } catch (error) {
+      alert(`Error: ${error.message}`);
+    }
+  });
+</script>
+</body>
+</html>

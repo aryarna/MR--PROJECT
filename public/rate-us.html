@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate Us</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Custom CSS for styling -->
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: black;
+      color: #ffffff;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid white;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .header img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .rating-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 50px;
+    }
+
+    .rating-stars {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    .rating-stars i {
+      color: gray;
+      cursor: pointer;
+    }
+
+    .rating-stars i.filled {
+      color: gold;
+    }
+
+    .custom-alert {
+      background-color: #d4edda; /* Light green background for success */
+      color: #155724; /* Dark green text color */
+      padding: 20px;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      display: none;
+    }
+
+    footer {
+      background-color: black;
+      color: white;
+      padding: 20px 0;
+    }
+
+    footer a {
+      color: white;
+      margin-right: 15px;
+    }
+
+    footer a:hover {
+      color: lightgray;
+      text-decoration: none;
+    }
+
+    /* Modal Styles */
+    .modal-content {
+      background-color:white;
+      color: black;
+    }
+
+    .modal-header {
+      border-bottom: none;
+    }
+
+    .modal-body {
+      font-size: 1.2rem;
+    }
+
+    .modal-footer {
+      border-top: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="container">
+    <img src="double1.jpg" alt="Logo">
+  </div>
+</div>
+
+<!-- Rating Form -->
+<div class="container rating-container">
+  <h2 class="text-center" style="color: cyan;">Rate Us</h2>
+  <form id="ratingForm" class="text-center">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+    </div>
+    <div class="rating-stars">
+      <i class="fas fa-star" data-value="1"></i>
+      <i class="fas fa-star" data-value="2"></i>
+      <i class="fas fa-star" data-value="3"></i>
+      <i class="fas fa-star" data-value="4"></i>
+      <i class="fas fa-star" data-value="5"></i>
+    </div>
+    <input type="hidden" id="rating" name="rating" required>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<!-- Custom Alert -->
+<div class="custom-alert text-center" role="alert" id="successMessage">
+  <h4><i class="fas fa-check-circle"></i> Thank You!</h4>
+  <p>Your rating has been successfully submitted!</p>
+</div>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Exciting Offer!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to earn 3x money through this game?</p>
+        <i class="fas fa-money-bill-wave fa-3x text-success"></i>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" id="earnMoneyButton">Yes, Earn Money</button>
+        <button type="button" class="btn btn-danger" id="retryButton">Retry</button>
+        <button type="button" class="btn btn-secondary" id="noButton">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+  <div class="container">
+    <p>&copy; 2024 Game of Skills. All rights reserved.</p>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Support</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div>
+      <a href="home.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="#">Contact</a>
+      <a href="payment.html">Payment</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyARxYvtfsCgbhvP5srmOxv9jZ9EqoOKWsA",
+    authDomain: "moneyproject-7c560.firebaseapp.com",
+    projectId: "moneyproject-7c560",
+    storageBucket: "moneyproject-7c560.appspot.com",
+    messagingSenderId: "270202522248",
+    appId: "1:270202522248:web:b4cc925df9bc3169eaed3d",
+    measurementId: "G-H53TG5NGY6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  document.addEventListener('DOMContentLoaded', function() {
+    let rating = 0;
+
+    // Rating Star Click Event
+    document.querySelectorAll('.rating-stars i').forEach(star => {
+      star.addEventListener('click', function() {
+        rating = this.getAttribute('data-value');
+        document.getElementById('rating').value = rating;
+
+        document.querySelectorAll('.rating-stars i').forEach(s => {
+          if (s.getAttribute('data-value') <= rating) {
+            s.classList.add('filled');
+          } else {
+            s.classList.remove('filled');
+          }
+        });
+      });
+    });
+
+    // Form Submit Event
+    document.getElementById('ratingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+
+      if (username && rating > 0) {
+        db.collection('ratings').add({
+          username: username,
+          rating: rating,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(function() {
+          const successMessage = document.getElementById('successMessage');
+          successMessage.style.display = 'block';
+          setTimeout(function() {
+            successMessage.style.display = 'none';
+            $('#confirmationModal').modal('show');
+            document.getElementById('ratingForm').reset();
+            document.querySelectorAll('.rating-stars i').forEach(s => s.classList.remove('filled'));
+          }, 2000);
+        })
+        .catch(function(error) {
+          console.error('Error writing document: ', error);
+        });
+      } else {
+        alert('Please enter your username and select a rating.');
+      }
+    });
+
+    // Modal Button Event Listeners
+    document.getElementById('earnMoneyButton').addEventListener('click', function() {
+      window.location.href = 'payment.html';
+    });
+
+    document.getElementById('retryButton').addEventListener('click', function() {
+      window.location.href = 'demo.html';
+    });
+
+    document.getElementById('noButton').addEventListener('click', function() {
+      window.location.href = 'home.html';
+    });
+  });
+</script>
+
+</body>
+</html>
